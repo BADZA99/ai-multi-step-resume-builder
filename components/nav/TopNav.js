@@ -5,6 +5,7 @@ import { ModeToggle } from "./mode-toggle";
 import Image from "next/image";
 import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { useUser } from "@clerk/nextjs";
+import { Toaster } from "react-hot-toast";
 
 export default function TopNav() {
   //hooks
@@ -20,6 +21,8 @@ export default function TopNav() {
           className="cursor-pointer"
         />
       </Link>
+      
+      <Toaster />
 
       <div className="flex justify-end items-center gap-2">
         {isSignedIn && (<Link href="/dashborad">{user?.fullName}'s Dashboard</Link>)}

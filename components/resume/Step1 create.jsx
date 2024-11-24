@@ -4,7 +4,7 @@ import { Input } from "../ui/input";
 import { useResume } from "@/context/resume";
 import { SignInButton, useUser } from "@clerk/nextjs";
 
-export default function Step1() {
+export default function Step1Create() {
   // context
   const { Resume, setResume, Step, setStep, saveResume } = useResume();
 
@@ -59,7 +59,7 @@ export default function Step1() {
         onChange={handleChange}
         value={Resume?.phone}
         placeholder="Your Phone"
-        type="text"
+        type="number"
         required
       />
       <Input
@@ -77,7 +77,7 @@ export default function Step1() {
         onChange={handleChange}
         value={Resume?.email}
         placeholder="Your Email"
-        type="text"
+        type="email"
         required
       />
       <div className="flex justify-end ">

@@ -1,7 +1,6 @@
 'use client'
 import ResumeCreateNav from '@/components/nav/ResumeCreateNav'
 import Step1 from '@/components/resume/Step1'
-import Step1Create from '@/components/resume/Step1 create'
 import Step2 from '@/components/resume/Step2'
 import Step3 from '@/components/resume/Step3'
 import Step4 from '@/components/resume/Step4'
@@ -16,7 +15,7 @@ export default function ResumeCreatePage() {
   return (
     <div className='flex flex-col  items-center justify-center h-screen'>
       <ResumeCreateNav/>
-        {Step===1 && <Step1Create />}
+        {Step===1 && <Step1 />}
         {Step===2 && <Step2 />}
         {Step===3 && <Step3 />}
         {Step===4 && <Step4 />}

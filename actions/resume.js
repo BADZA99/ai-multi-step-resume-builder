@@ -10,7 +10,7 @@ export const saveResumeToDb=async (data)=>{
         const user= await currentUser();
         const userEmail=user?.emailAddresses[0]?.emailAddress;
 
-        const {_id,...Result}=data;
+        const {_id,...rest}=data;
         const resume=await Resume.create({...rest,userEmail});
 
         return JSON.parse(JSON.stringify(resume));
