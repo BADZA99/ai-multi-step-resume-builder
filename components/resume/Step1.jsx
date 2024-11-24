@@ -5,10 +5,11 @@ import { useResume } from "@/context/resume";
 
 export default function Step1() {
   // context
-  const { Resume, setResume, Step, setStep } = useResume();
+  const { Resume, setResume, Step, setStep, saveResume } = useResume();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    saveResume();
     console.log(Resume);
     //save to db
     //go to step 2
@@ -21,7 +22,7 @@ export default function Step1() {
         <Input
           className="mb-3"
           onChange={(e) => setResume({ ...Resume, name: e.target.value })}
-          value={Resume.name}
+          value={Resume?.name}
           placeholder="Your Name"
           type="text"
           autoFocus
@@ -30,7 +31,7 @@ export default function Step1() {
         <Input
           className="mb-3"
           onChange={(e) => setResume({ ...Resume, job: e.target.value })}
-          value={Resume.job}
+          value={Resume?.job}
           placeholder="Your Job"
           type="text"
           required
@@ -46,7 +47,7 @@ export default function Step1() {
         <Input
           className="mb-3"
           onChange={(e) => setResume({ ...Resume, address: e.target.value })}
-          value={Resume.address}
+          value={Resume?.address}
           placeholder="Your Address"
           type="text"
           required
@@ -54,7 +55,7 @@ export default function Step1() {
         <Input
           className="mb-3"
           onChange={(e) => setResume({ ...Resume, email: e.target.value })}
-          value={Resume.email}
+          value={Resume?.email}
           placeholder="Your Email"
           type="email"
           required
