@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { saveResumeToDb } from "@/actions/resume";
+import { saveResumeToDb, getUserResumesFromDb } from "@/actions/resume";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 
@@ -28,6 +28,7 @@ const initialState = {
 export function ResumeProvider({ children }) {
   const [Resume, setResume] = React.useState(initialState);
   const [Step, setStep] = React.useState(1);
+  const [resumes, setResumes] = React.useState([]);
 const router=useRouter();
   React.useEffect(() => {
     const resume = localStorage.getItem("resume");
@@ -35,6 +36,11 @@ const router=useRouter();
       setResume(JSON.parse(resume));
     }
   }, []);
+
+  React.useEffect(()=>{
+    getUserResumes();
+    console.log(resumes);
+  },[]);
 
   const saveResume = async () => {
     try {
@@ -51,6 +57,17 @@ const router=useRouter();
     }
   };
 
+  const getUserResumes=async ()=>{
+    try{
+      const data=await getUserResumesFromDb();
+      console.log(data);
+      setResumes(data);
+    }catch(error){
+      console.log(error);
+      toast.error("Something went wrong");
+    }
+  }
+
   return (
     <ResumeContext.Provider
       value={{
@@ -59,6 +76,7 @@ const router=useRouter();
         Step,
         setStep,
         saveResume,
+        resumes,
       }}
     >
       {children}

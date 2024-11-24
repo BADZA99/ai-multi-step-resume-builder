@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 
 export default async function  db() {
-    if (mongoose.connections.readyState>=1) {
+    if (mongoose?.connections?.readyState>=1) {
         // await mongoose.connect(process.env.MONGODB_URI, {
         //     useNewUrlParser: true,
         //     useUnifiedTopology: true,
